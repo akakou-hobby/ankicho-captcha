@@ -17,9 +17,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".CaptchaActivity">
-            <meta-data android:name="com.urbandroid.sleep.captcha.meta.has_difficulty" android:value="true"/>
+            <meta-data
+                android:name="com.urbandroid.sleep.captcha.meta.has_difficulty"
+                android:value="true" />
+
             <intent-filter>
-                <action android:name="com.urbandroid.sleep.captcha.intent.action.OPEN"/>
+                <action android:name="com.urbandroid.sleep.captcha.intent.action.OPEN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ConfigActivity">
+            <meta-data android:name="com.urbandroid.sleep.captcha.meta.for_captcha" android:value=".CaptchaActivity"/>
+            <intent-filter>
+                <action android:name="com.urbandroid.sleep.captcha.intent.action.CONFIG"/>
             </intent-filter>
         </activity>
     </application>
