@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="akakou.ankichocaptcha.CaptchaActivity">
+
+    <TextView
+        android:id="@+id/null_text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\n"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/q_const_text"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="  Q,"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="326dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+
+            android:text="TextView"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/null_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\n"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/a_const_text"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="  A,"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/answer_text"
+            android:layout_width="326dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+
+            android:text="TextView"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/null_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\n"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/solve_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:onClick="onClick"
+            android:text="solved !"
+            tools:layout_editor_absoluteX="-5dp"
+            tools:layout_editor_absoluteY="195dp" />
+
+        <Button
+            android:id="@+id/unsolve_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:onClick="onClick"
+            android:text="unsolved !"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="195dp" />
+    </LinearLayout>
+
+
+</LinearLayout>
