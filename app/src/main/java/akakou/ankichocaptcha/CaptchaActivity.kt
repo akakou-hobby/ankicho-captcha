@@ -3,8 +3,11 @@ package akakou.ankichocaptcha
 import android.app.Activity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.urbandroid.sleep.captcha.CaptchaSupport
 import com.urbandroid.sleep.captcha.CaptchaSupportFactory
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 
 class CaptchaActivity : Activity() {
@@ -17,7 +20,6 @@ class CaptchaActivity : Activity() {
         captchaSupport = CaptchaSupportFactory.create(this)
 
         val button : Button = findViewById(R.id.button)
-
         button.setOnClickListener {
             captchaSupport!!.solved()
             finish()
