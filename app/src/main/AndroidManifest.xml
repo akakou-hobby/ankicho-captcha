@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CaptchaActivity">
+            <meta-data android:name="com.urbandroid.sleep.captcha.meta.has_difficulty" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbandroid.sleep.captcha.intent.action.OPEN"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
