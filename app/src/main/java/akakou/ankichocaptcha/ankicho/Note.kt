@@ -12,17 +12,20 @@ class Note : Serializable {
                 .shuffled()
 
         word = list.getOrNull(0)
-        return word!!.answer
+
+        if(word == null) return null
+
+        return word!!.question
     }
 
-    fun recieveAnswer(answer: String) : Boolean {
-        if (answer != word!!.answer) return false
+    fun recieveAnswer(hasCorrect: Boolean): String {
+        if(!hasCorrect) return ""
 
         words = words
                 .filter { _word -> _word != word }
                 .toMutableList()
 
-        return true
+        return word!!.answer
     }
 
     fun hasNext() : Boolean{
