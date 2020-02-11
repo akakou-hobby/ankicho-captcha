@@ -1,8 +1,7 @@
 package akakou.ankichocaptcha.ankicho
 
-import java.io.Serializable
 
-class Note : Serializable {
+class Note {
     var words : MutableList<Word> = mutableListOf()
 
     var word : Word? = null
