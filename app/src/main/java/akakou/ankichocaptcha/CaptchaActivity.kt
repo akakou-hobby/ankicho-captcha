@@ -11,12 +11,17 @@ import android.widget.TextView
 import android.view.View
 import android.widget.Button
 import java.io.File
+import java.lang.Thread.sleep
+import kotlin.concurrent.thread
 
 
 class CaptchaActivity : Activity() {
     var captchaSupport : CaptchaSupport?  = null
 
     var note : Note? = null
+    var count = 0
+
+    val TIMEOUT : Long = 2500
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,10 +59,25 @@ class CaptchaActivity : Activity() {
             answerButton3.text = question!!.selection[3].answer
 
         }
+
+        val tmp_count = count;
+
+        thread {
+            sleep(TIMEOUT)
+            if (tmp_count == count) {
+
+                runOnUiThread {
+                    renderAnswer()
+
+                }
+            }
+        }
     }
 
     fun renderAnswer(){
         setContentView(R.layout.activity_answer)
+
+        count ++
 
         val questionTextView = findViewById<View>(R.id.question_text) as TextView
         questionTextView.text = note!!.word!!.question
