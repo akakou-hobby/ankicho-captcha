@@ -1,19 +1,16 @@
 package akakou.ankichocaptcha
 
+import akakou.ankichocaptcha.ankicho.Answer
 import akakou.ankichocaptcha.ankicho.Note
 import akakou.ankichocaptcha.ankicho.NoteRepository
 import android.app.Activity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
 import com.urbandroid.sleep.captcha.CaptchaSupport
 import com.urbandroid.sleep.captcha.CaptchaSupportFactory
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.nio.file.Paths
 import android.widget.TextView
-import android.content.Intent
 import android.view.View
+import android.widget.Button
+import java.io.File
 
 
 class CaptchaActivity : Activity() {
@@ -26,25 +23,36 @@ class CaptchaActivity : Activity() {
         super.onCreate(savedInstanceState)
         captchaSupport = CaptchaSupportFactory.create(this)
 
-        val path = Paths.get(filesDir.toPath().toString() + "/note.csv")
-        note = NoteRepository.read(path)
+        val file = File("$filesDir/note.csv")
+        note = NoteRepository.read(file)
 
         renderQuestion()
     }
 
     fun renderQuestion() {
-        val question = note!!.sendQuestion()
+        val question = note!!.question()
 
         if (question == null) {
             captchaSupport!!.solved()
             finish()
 
-
         } else {
             setContentView(R.layout.activity_question)
-            val questionTextView : TextView = findViewById(R.id.question_text)
 
-            questionTextView.text = note!!.sendQuestion()
+            val question = note!!.question()
+
+            val questionTextView : TextView = findViewById(R.id.question_text)
+            val answerButton0 : TextView = findViewById(R.id.answer_button0)
+            val answerButton1 : TextView = findViewById(R.id.answer_button1)
+            val answerButton2 : TextView = findViewById(R.id.answer_button2)
+            val answerButton3 : TextView = findViewById(R.id.answer_button3)
+
+            questionTextView.text = question!!.correctAnswer.question
+            answerButton0.text = question!!.selection[0].answer
+            answerButton1.text = question!!.selection[1].answer
+            answerButton2.text = question!!.selection[2].answer
+            answerButton3.text = question!!.selection[3].answer
+
         }
     }
 
@@ -61,20 +69,25 @@ class CaptchaActivity : Activity() {
 
     fun onClick(v: View) {
         when (v.id) {
-            R.id.solve_button -> {
-                note!!.recieveAnswer(true)
+            R.id.next_button -> {
                 renderQuestion()
             }
 
-            R.id.unsolve_button -> {
-                note!!.recieveAnswer(false)
-                renderQuestion()
+            R.id.skip_button -> {
+                renderAnswer()
             }
 
-            R.id.go_button -> {
+            else -> {
+                val answerText = findViewById<Button>(v.id).text
+                var answer = Answer(answerText.toString())
+                note!!.answer(answer)
+
                 renderAnswer()
             }
         }
+
+
+
     }
 
     override fun onBackPressed() {
