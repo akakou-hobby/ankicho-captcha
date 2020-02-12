@@ -10,7 +10,7 @@ import java.nio.file.StandardCopyOption
 
 
 class ConfigActivity : Activity() {
-    val REQUEST_CSV_GET = 1
+    private val REQUEST_CSV_GET = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +27,14 @@ class ConfigActivity : Activity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        if (requestCode == REQUEST_CSV_GET && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_CSV_GET && resultCode == RESULT_OK) {
             val uri = data.data
-            val inputStream = contentResolver.openInputStream(uri)
+            val inputStream = contentResolver.openInputStream(uri!!)
 
-            val destinationPath = filesDir.toPath().toString() + "/note.csv"
+            val destinationPath = "$filesDir/note.csv"
             val destinationFile = File(destinationPath)
 
-            Files.copy(inputStream, destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING)
-
+            inputStream!!.copyTo(destinationFile.outputStream())
             finish()
         }
     }

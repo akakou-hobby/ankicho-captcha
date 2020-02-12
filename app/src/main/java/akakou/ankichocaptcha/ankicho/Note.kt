@@ -1,13 +1,11 @@
 package akakou.ankichocaptcha.ankicho
 
-import java.io.Serializable
 
-class Note : Serializable {
-    var words : MutableList<Word> = mutableListOf()
-
+class Note(val all: List<Word>, size: Int = 5){
+    var words : MutableList<Word> = all.map { it }.shuffled().take(size).toMutableList()
     var word : Word? = null
 
-    fun sendQuestion() : String? {
+    fun question() : Question? {
         val list = words
                 .shuffled()
 
@@ -15,17 +13,17 @@ class Note : Serializable {
 
         if(word == null) return null
 
-        return word!!.question
+        return Question(word!!, all)
     }
 
-    fun recieveAnswer(hasCorrect: Boolean): String {
-        if(!hasCorrect) return ""
+    fun answer(answer: Answer): Boolean {
+        if(answer.text != word!!.answer) return false
 
         words = words
                 .filter { _word -> _word != word }
                 .toMutableList()
 
-        return word!!.answer
+        return true
     }
 
     fun hasNext() : Boolean{

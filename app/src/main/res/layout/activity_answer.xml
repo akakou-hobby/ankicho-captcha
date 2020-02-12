@@ -83,22 +83,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/solve_button"
+            android:id="@+id/next_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:onClick="onClick"
-            android:text="solved !"
-            tools:layout_editor_absoluteX="-5dp"
-            tools:layout_editor_absoluteY="195dp" />
-
-        <Button
-            android:id="@+id/unsolve_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:onClick="onClick"
-            android:text="unsolved !"
+            android:text="next"
             tools:layout_editor_absoluteX="220dp"
             tools:layout_editor_absoluteY="195dp" />
     </LinearLayout>

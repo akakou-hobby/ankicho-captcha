@@ -1,8 +1,4 @@
 package akakou.ankichocaptcha.ankicho
 
-import java.io.Serializable
 
-class Word (question: String, answer: String) : Serializable {
-    var question = question
-    var answer = answer
-}
+class Word (val question: String, val answer: String)
