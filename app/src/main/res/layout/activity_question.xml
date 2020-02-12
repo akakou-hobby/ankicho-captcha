@@ -59,10 +59,12 @@
         android:layout_marginTop="36dp"
         android:onClick="onClick"
         android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/answer_button3"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_button0"
+        app:layout_constraintVertical_bias="0.004"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -76,18 +78,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_button1"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/skip_button"
-        android:layout_width="349dp"
-        android:layout_height="55dp"
-        android:onClick="onClick"
-        android:text="Skip"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer_button2"
-        app:layout_constraintVertical_bias="0.2" />
 
 </android.support.constraint.ConstraintLayout>

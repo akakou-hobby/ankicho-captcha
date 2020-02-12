@@ -97,10 +97,6 @@ class CaptchaActivity : Activity() {
                 renderQuestion()
             }
 
-            R.id.skip_button -> {
-                renderAnswer()
-            }
-
             else -> {
                 val answerText = findViewById<Button>(v.id).text
                 var answer = Answer(answerText.toString())
