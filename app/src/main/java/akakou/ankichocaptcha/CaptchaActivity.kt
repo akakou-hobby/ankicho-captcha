@@ -38,6 +38,7 @@ class CaptchaActivity : Activity() {
         val question = note!!.question()
 
         if (question == null) {
+            count = -1
             captchaSupport!!.solved()
             finish()
 
@@ -67,8 +68,11 @@ class CaptchaActivity : Activity() {
             if (tmp_count == count) {
 
                 runOnUiThread {
-                    renderAnswer()
+                    try {
+                        renderAnswer()
+                    } catch (e: Exception) {
 
+                    }
                 }
             }
         }

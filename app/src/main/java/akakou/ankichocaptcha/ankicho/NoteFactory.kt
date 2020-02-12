@@ -1,7 +1,7 @@
 package akakou.ankichocaptcha.ankicho
 
 object NoteFactory {
-    fun generate(text : String, size: Int=5) : Note {
+    fun generate(text : String) : Note {
         val lines = text.split("\n")
 
         var all = mutableListOf<Word>()

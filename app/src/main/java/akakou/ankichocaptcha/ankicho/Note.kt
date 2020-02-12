@@ -1,7 +1,7 @@
 package akakou.ankichocaptcha.ankicho
 
 
-class Note(val all: List<Word>, size: Int = 5){
+class Note(val all: List<Word>, size: Int = 3){
     var words : MutableList<Word> = all.map { it }.shuffled().take(size).toMutableList()
     var word : Word? = null
 
