@@ -1,4 +1,3 @@
 package akakou.ankichocaptcha.ankicho;
 
-public class Answer {
-}
+class Answer(val text: String)
