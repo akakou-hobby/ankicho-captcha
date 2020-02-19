@@ -5,11 +5,10 @@ import akakou.ankichocaptcha.ankicho.Note
 import akakou.ankichocaptcha.ankicho.NoteRepository
 import android.app.Activity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import com.urbandroid.sleep.captcha.CaptchaSupport
 import com.urbandroid.sleep.captcha.CaptchaSupportFactory
-import android.widget.TextView
-import android.view.View
-import android.widget.Button
 import java.io.File
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
@@ -21,7 +20,7 @@ class CaptchaActivity : Activity() {
     var note : Note? = null
     var count = 0
 
-    val TIMEOUT : Long = 2500
+    val TIMEOUT : Long = 3000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,11 +97,14 @@ class CaptchaActivity : Activity() {
             }
 
             else -> {
-                val answerText = findViewById<Button>(v.id).text
-                var answer = Answer(answerText.toString())
-                note!!.answer(answer)
+                val answerText = findViewById<View>(v.id)
 
-                renderAnswer()
+                if (answerText is TextView) {
+                    var answer = Answer(answerText.toString())
+                    note!!.answer(answer)
+
+                    renderAnswer()
+                }
             }
         }
 
