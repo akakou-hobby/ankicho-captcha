@@ -7,6 +7,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.urbandroid.sleep.captcha.CaptchaSupport
 import com.urbandroid.sleep.captcha.CaptchaSupportFactory
 import java.io.File
@@ -91,25 +92,22 @@ class CaptchaActivity : Activity() {
 
 
     fun onClick(v: View) {
-        when (v.id) {
-            R.id.next_button -> {
-                renderQuestion()
-            }
-
-            else -> {
-                val answerText = findViewById<View>(v.id)
-
-                if (answerText is TextView) {
-                    var answer = Answer(answerText.toString())
-                    note!!.answer(answer)
-
-                    renderAnswer()
-                }
-            }
+        if(v.id == R.id.next_button) {
+            renderQuestion()
         }
 
+        else if (v.id == R.id.answer_button0
+                || v.id == R.id.answer_button1
+                || v.id == R.id.answer_button2
+                || v.id == R.id.answer_button3){
 
+            val answerText = findViewById<TextView>(v.id)
 
+            var answer = Answer(answerText.text.toString())
+            note!!.answer(answer)
+
+            renderAnswer()
+        }
     }
 
     override fun onBackPressed() {
